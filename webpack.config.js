@@ -1,7 +1,7 @@
 module.exports = {
-    entry: "./src/js/main.js",
+    entry: "./src/main.js",
     output: {
-        filename: "./build/js/app.js" 
+        filename: "./build/app.js" 
     },
     watch: true, 
     module: {
@@ -17,6 +17,6 @@ module.exports = {
         ]
     },
     devServer: {
-        filename: './build/js/app.js',
+        filename: './build/app.js',
     }
 }
