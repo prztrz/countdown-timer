@@ -19,7 +19,7 @@ Date.prototype.getDayOfYear =  function() {
     }
 
     result += this.getDate();
-    return;
+    return result;
 }
 
 export {Date}

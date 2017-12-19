@@ -13,7 +13,10 @@ const getDaysLeft = (currentDate, eventDate) => {
         daysLeft = eventDate.getDayOfYear() - currentDate.getDayOfYear();
     } else {
         let yearDiff = eventDate.getFullYear() - currentDate.getFullYear();
+
         daysLeft = currentDate.isLeapYear() ? 366 - currentDate.getDayOfYear() : 365 - currentDate.getDayOfYear(); 
+
+        console.log(currentDate.getDayOfYear())
 
         for (let i = yearDiff-1; i>0; i--) {
             let temp = new Date(eventDate.getFullYear() - i);
@@ -75,10 +78,10 @@ const getRestLeft = (currentDate, eventDate) => {
  */
 const runCounter = (days, hours, minutes, seconds) => {
     
-    let $days = $('#days');
-    let $hours = $('#hours');
-    let $minutes = $('#minutes');
-    let $seconds = $('#seconds');
+    let daysDiv = document.getElementById('days');
+    let hoursDiv = document.getElementById('hours');
+    let minutesDiv = document.getElementById('minutes');
+    let secondsDiv = document.getElementById('seconds');
 
     let interval = setInterval(() => {
         seconds--;
@@ -98,23 +101,23 @@ const runCounter = (days, hours, minutes, seconds) => {
         }
 
 
-        let daysString = (days < 10) ? `0${days}d` : `${days}d`;
-        let hoursString = (hours < 10) ? `0${hours}h` : `${hours}h`;
-        let minutesString = (minutes < 10) ? `0${minutes}m` : `${minutes}m`
-        let secondsString = (seconds < 10) ? `0${seconds}s` : `${seconds}s`
+        let daysString = (days < 10) ? `0${days}` : `${days}`;
+        let hoursString = (hours < 10) ? `0${hours}` : `${hours}`;
+        let minutesString = (minutes < 10) ? `0${minutes}` : `${minutes}`
+        let secondsString = (seconds < 10) ? `0${seconds}` : `${seconds}`
 
         if (days < 0) {
             clearInterval(interval);
-            daysString = '00d';
-            hoursString = '00h';
-            minutesString = '00m';
-            secondsString = '00s';
+            daysString = '00';
+            hoursString = '00';
+            minutesString = '00';
+            secondsString = '00';
         }
 
-        $days.text(daysString);
-        $hours.text(hoursString);
-        $minutes.text(minutesString);
-        $seconds.text(secondsString);
+        daysDiv.innerText = daysString;
+        hoursDiv.innerText = hoursString;
+        minutesDiv.innerText = minutesString;
+        secondsDiv.innerText = secondsString;
     }, 1000);
 
 }
@@ -133,4 +136,4 @@ const setCounter = () => {
     runCounter(daysLeft, hoursLeft, minutesLeft, secondsLeft)
 }
 
-export {setCounter}
+setCounter();
